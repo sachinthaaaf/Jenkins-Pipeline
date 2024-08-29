@@ -36,24 +36,23 @@ pipeline {
             steps {
                 echo 'Stage 7: Deploying to production server...'
             }
-        }
-    }
-
-    post {
-        success {
-            archiveArtifacts artifacts: '**/build.log', allowEmptyArchive: true
-            echo "Pipeline completed successfully!"
-            emailext (
-                mail to: 'yohan20050917@gmail.com',
-                subject: "Pipeline Passed: ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
-                body: """The pipeline has completed successfully.
-                          Build number: ${env.BUILD_NUMBER}\n\n
-                          Check Jenkins for details: ${env.BUILD_URL}""",
-                attachLog: true
-            )
-        }
-        failure {
-            echo "Pipeline failed. Please check the logs."
+            post {
+                success {
+                    archiveArtifacts artifacts: '**/build.log', allowEmptyArchive: true
+                    echo "Pipeline completed successfully!"
+                    emailext (
+                        to: 'yohan20050917@gmail.com',
+                        subject: "Pipeline Passed: ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
+                        body: """The pipeline has completed successfully.
+                                 Build number: ${env.BUILD_NUMBER}\n\n
+                                 Check Jenkins for details: ${env.BUILD_URL}""",
+                        attachLog: true
+                    )
+                }
+                failure {
+                    echo "Pipeline failed. Please check the logs."
+                }
+            }
         }
     }
 }
