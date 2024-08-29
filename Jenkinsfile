@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Stage 1: Building the project....'
+                echo 'Stage 1: Building the project.....'
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo 'Stage 2: Running unit and integration tests....'
+                echo 'Stage 2: Running unit and integration tests.....'
             }
         }
         stage('Code Analysis') {
             steps {
-                echo 'Stage 3: Performing code analysis....'
+                echo 'Stage 3: Performing code analysis.....'
             }
         }
         stage('Security Scan') {
