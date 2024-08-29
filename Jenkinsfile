@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Code Analysis') {
             steps {
-                echo 'Stage 3: Performing code analysis...'
+                echo 'Stage 3: Performing code analysis....'
             }
         }
         stage('Security Scan') {
