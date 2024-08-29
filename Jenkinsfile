@@ -44,7 +44,7 @@ pipeline {
             archiveArtifacts artifacts: '**/build.log', allowEmptyArchive: true
             echo "Pipeline completed successfully!"
             emailext (
-                to: 'yohan20050917@gmail.com',
+                mail to: 'yohan20050917@gmail.com',
                 subject: "Pipeline Passed: ${env.JOB_NAME} Build #${env.BUILD_NUMBER}",
                 body: """The pipeline has completed successfully.
                           Build number: ${env.BUILD_NUMBER}\n\n
